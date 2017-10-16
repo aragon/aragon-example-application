@@ -94,7 +94,7 @@ The magic here is that the state is automagically cached and loaded from cache w
 const store = app.store(reducer)
 ```
 
-> Alternatively you can just listen for state using `app.state()` or only events using `app.events()`.
+> 📘 Alternatively you can just listen for state using `app.state()` or only events using `app.events()`.
 
 The next few lines subscribe to our state store and updates the DOM whenever a change has occured.
 
