@@ -1,0 +1,21 @@
+{
+  "name": "aragon-example-module",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "@aragon/node-aragon": "*"
+  },
+  "devDependencies": {
+    "webpack": "^3.7.1"
+  },
+  "scripts": {
+    "build": "cp -r app $BUILD_DESTINATION_DIRECTORY && webpack $BUILD_DESTINATION_DIRECTORY/app.js $BUILD_DESTINATION_DIRECTORY/bundle.js && rm $BUILD_DESTINATION_DIRECTORY/app.js && cp package.json $BUILD_DESTINATION_DIRECTORY/package.json",
+    "deploy": "aragon-dev-cli publish"
+  },
+  "config": {
+    "aragon": {
+      "contractArtifactsPath": "./build/contracts",
+      "modulePath": "./build/app"
+    }
+  }
+}
