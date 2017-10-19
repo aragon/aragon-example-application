@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "dependencies": {
+    "@aragon/core": "^1.0.0",
     "@aragon/node-aragon": "*"
   },
   "devDependencies": {

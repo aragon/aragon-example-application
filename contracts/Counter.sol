@@ -1,6 +1,6 @@
 pragma solidity ^0.4.0;
 
-import "./aragon/App.sol";
+import "@aragon/core/contracts/apps/App.sol";
 
 contract Counter is App {
     /// Events
