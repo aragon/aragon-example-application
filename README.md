@@ -1,16 +1,16 @@
-# Aragon Example Module
+# Aragon Example Application
 
-This is a simple example of a module for Aragon.
+This is a simple example of an application for Aragon.
 
-The repository contains the UI and logic for the module, as well as the contracts.
+The repository contains the UI and logic for the application, as well as the contracts.
 
-The module itself is a simple counter - the user can increment a value in the contract or decrement it, depending on their permissions.
+The application itself is a simple counter - the user can increment a value in the contract or decrement it, depending on their permissions.
 
 It showcases transactions, calls and reducing events to state.
 
 ## Deploying
 
-First you need to build the module using Truffle. This builds the front-end and the contracts.
+First you need to build the application using Truffle. This builds the front-end and the contracts.
 
 ```bash
 truffle build
@@ -25,8 +25,8 @@ aragon-dev-cli publish $CONTRACT_ADDRESS
 ```
 info: Generating artifacts
 info: Publishing to IPFS
-info: Published module to IPFS: IPFS_HASH
-info: This is the first time you are publishing this module
+info: Published application to IPFS: IPFS_HASH
+info: This is the first time you are publishing this application
 info: Sign and broadcast this transaction to create counter-example.aragonpm.test@1.0.0
 To: APM_REPO_REGISTRY_ADDRESS
 Data: DATA
@@ -34,17 +34,17 @@ Gas: GAS_ESTIMATE
 Gas price: GAS_PRICE
 ```
 
-Now you need to install the module to your DAO. You can deploy your own DAO by running the migrations of `aragon-core`.
+Now you need to install the application in your DAO. You can deploy your own DAO by running the migrations of `aragon-core`.
 
 **Steps to install**
 
 - Deploy an `AppProxy` with the correct kernel address and application ID
-- Call `setAppCode` with the application ID and the address of the deployed contract of this module
+- Call `setAppCode` with the application ID and the address of the deployed contract of this application
 - Call `createPermission` for the entity you want to be able to increment and/or decrement the counter
 
 ## Walkthrough
 
-First we import `node-aragon`. Note that we only import the client-specific files to reduce the bundle size of the module.
+First we import `node-aragon`. Note that we only import the client-specific files to reduce the bundle size of the application.
 
 ```js
 const Aragon = require('@aragon/node-aragon/client').default
@@ -86,9 +86,9 @@ Now we instantiate the Aragon client
 const app = new Aragon()
 ```
 
-We then set up our state store. This function takes a reducer and returns an observable, that emits the current state of the module on each update.
+We then set up our state store. This function takes a reducer and returns an observable, that emits the current state of the application on each update.
 
-The magic here is that the state is automagically cached and loaded from cache when you reload the module.
+The magic here is that the state is automagically cached and loaded from cache when you reload the application.
 
 ```js
 const store = app.store(reducer)
@@ -104,7 +104,7 @@ store.subscribe((state) => {
 })
 ```
 
-Finally, to showcase `call`s, we also get the value from the contract when the module is first loaded using the `call` method.
+Finally, to showcase `call`s, we also get the value from the contract when the application is first loaded using the `call` method.
 
 ```js
 app.call('value')

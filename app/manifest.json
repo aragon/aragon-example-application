@@ -1,6 +1,6 @@
 {
-  "name": "Counter Module",
-  "description": "This is an example module for Aragon.",
+  "name": "Counter",
+  "description": "This is an example application for Aragon.",
   "icons": [{
     "src": "images/icon.png",
     "sizes": "192x192"
