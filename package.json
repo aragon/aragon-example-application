@@ -4,7 +4,7 @@
   "main": "app.js",
   "dependencies": {
     "@aragon/core": "^1.0.0",
-    "@aragon/node-aragon": "*"
+    "@aragon/node-aragon": "^1.1.0"
   },
   "devDependencies": {
     "webpack": "^3.7.1"
