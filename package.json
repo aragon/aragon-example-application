@@ -2,6 +2,10 @@
   "name": "aragon-example-module",
   "version": "1.0.0",
   "main": "app.js",
+  "author": "Aragon Institution MTU <contact@aragon.one>",
+  "contributors": [
+    "Oliver Nordbjerg <oliver@aragon.one>"
+  ],
   "dependencies": {
     "@aragon/core": "^1.0.0",
     "@aragon/node-aragon": "^1.1.0"
