@@ -122,9 +122,9 @@ This will always return an observable that emits a single value, the transaction
 incrementButton.onclick = function () {
   app.increment()
     .subscribe((transactionHash) => {
-      alert(`Decrement succeeded in transaction ${transactionHash}`)
+      alert(`Increment succeeded in transaction ${transactionHash}`)
     }, (error) => {
-      alert(`Decrement could not be performed: ${error}`)
+      alert(`Increment could not be performed: ${error}`)
     })
 }
 
