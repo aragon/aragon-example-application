@@ -1,31 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- app/index.html !-->
+<!doctype html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Example Counter Application</title>
+    <title>Counter App</title>
 </head>
 <body>
-  <h1>Example app</h1>
-  <p>This value was fetched with a `call`: <span id="value-call">-</span></span></p>
-  <p>Events we've got since last sync</p>
-  <pre id="event-log"></pre>
-
-  <p>Current state</p>
-  <pre id="state-log">No state yet.</pre>
-
-  <p>Actions</p>
-  <button id="increment">Increment</button> <button id="decrement">Decrement</button>
-
-  <script src="./bundle.js"></script>
-
-  <!-- styles, just ignore !-->
-  <style>
-    pre {
-      padding: 1em;
-      background: #c3c3c3;
-    }
-  </style>
+    <button id="decrement">-</button>
+    <div id="view">...</div>
+    <button id="increment">+</button>
+    <script src="app.js"></script>
 </body>
 </html>

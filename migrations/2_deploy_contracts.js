@@ -1,5 +1,5 @@
-var Counter = artifacts.require('Counter')
+var App = artifacts.require('./Counter.sol')
 
 module.exports = function (deployer) {
-  deployer.deploy(Counter)
+  deployer.deploy(App)
 }

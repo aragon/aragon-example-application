@@ -1,26 +1,32 @@
-pragma solidity ^0.4.0;
+pragma solidity ^0.4.4;
 
-import "@aragon/core/contracts/apps/App.sol";
+import "@aragon/os/contracts/apps/AragonApp.sol";
 
-contract Counter is App {
-    /// Events
-    event Increment(uint indexed blockNumber);
-    event Decrement(uint indexed blockNumber);
+contract Counter is AragonApp {
+    // Events
+    event Increment(address entity);
+    event Decrement(address entity);
 
-    /// State
+    // State
     int public value;
 
-    /// ACL
-    bytes32 constant public INCREMENT_ROLE = bytes32(1);
-    bytes32 constant public DECREMENT_ROLE = bytes32(2);
+    // Roles
+    bytes32 constant public INCREMENT_ROLE = keccak256("INCREMENT_ROLE");
+    bytes32 constant public DECREMENT_ROLE = keccak256("DECREMENT_ROLE");
     
+    /**
+     * @notice Increment the counter by 1
+     */
     function increment() auth(INCREMENT_ROLE) external {
         value += 1;
-        Increment(block.number);
+        Increment(msg.sender);
     }
 
+    /**
+     * @notice Decrement the counter by 1
+     */
     function decrement() auth(DECREMENT_ROLE) external {
         value -= 1;
-        Decrement(block.number);
+        Decrement(msg.sender);
     }
 }

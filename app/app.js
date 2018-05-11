@@ -1,59 +1,26 @@
-const Aragon = require('@aragon/node-aragon/client').default
+// app/app.js
+import Aragon, { providers } from '@aragon/client'
 
-// DOM
-const eventLog = document.getElementById('event-log')
-const stateLog = document.getElementById('state-log')
-const valueCall = document.getElementById('value-call')
-const incrementButton = document.getElementById('increment')
-const decrementButton = document.getElementById('decrement')
+const app = new Aragon(
+  new providers.WindowMessage(window.parent)
+)
+const view = document.getElementById('view')
+const increment = document.getElementById('increment')
+const decrement = document.getElementById('decrement')
 
-// State
-// Gets the current state from cache, catches up
-// with events and persists the state in cache
-const reducer = (state, event) => {
-  // Handle null state
-  state = state === null ? 0 : state
-
-  // Log event
-  eventLog.innerHTML += JSON.stringify(event) + '\n'
-
-  // Reduce event
-  return event.event === 'Increment'
-    ? state + 1
-    : state - 1
-}
-
-const app = new Aragon()
-const store = app.store(reducer)
-
-// Alternatively you can listen for only state with app.state()
-// Or only events w/ app.events()
-
-// UI
-store.subscribe((state) => {
-  stateLog.innerHTML = JSON.stringify(state, null, 2)
-})
-
-app.call('value')
-  .subscribe((value) => {
-    valueCall.innerHTML = value
-  })
-
-// Transactions
-incrementButton.onclick = function () {
+increment.onclick = () => {
   app.increment()
-    .subscribe((transactionHash) => {
-      alert(`Decrement succeeded in transaction ${transactionHash}`)
-    }, (error) => {
-      alert(`Decrement could not be performed: ${error}`)
-    })
+}
+decrement.onclick = () => {
+  app.decrement()
 }
 
-decrementButton.onclick = function () {
-  app.decrement()
-    .subscribe((transactionHash) => {
-      alert(`Decrement succeeded in transaction ${transactionHash}`)
-    }, (error) => {
-      alert(`Decrement could not be performed: ${error}`)
-    })
-}
+app.state().subscribe(
+  (state) => {
+    view.innerHTML = `The counter is ${state || 0}`
+  },
+  (err) => {
+    view.innerHTML = 'An error occured, check the console'
+    console.log(err)
+  }
+)

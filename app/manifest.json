@@ -1,8 +1,0 @@
-{
-  "name": "Counter",
-  "description": "This is an example application for Aragon.",
-  "icons": [{
-    "src": "images/icon.png",
-    "sizes": "192x192"
-  }]
-}
